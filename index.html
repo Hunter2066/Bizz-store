@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iStore - iPhone Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#eff0f5] font-sans">
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="p-3">
+            <div class="flex justify-between items-center mb-2">
+                <h1 class="text-2xl font-black text-[#f85606] italic uppercase">iStore</h1>
+                <button onclick="sortByPrice()" class="text-[#f85606] text-xs font-bold border border-[#f85606] px-2 py-1 rounded">
+                    Sort Price ↑
+                </button>
+            </div>
+            <input type="text" id="searchInput" onkeyup="filterPhones()" placeholder="Search in iStore" 
+            class="w-full bg-[#eff0f5] rounded px-4 py-2 text-sm outline-none focus:ring-1 focus:ring-[#f85606]">
+        </div>
+    </nav>
+
+    <div class="bg-white m-2 p-3 rounded shadow-sm flex justify-between items-center border-l-4 border-[#f85606]">
+        <div>
+            <span class="text-[#f85606] font-bold text-sm">FLASH SALE</span>
+            <div id="timer" class="text-gray-800 font-mono text-lg font-bold">08:00:00</div>
+        </div>
+        <div class="text-[10px] text-gray-400 font-bold uppercase text-right">Selling Fast!</div>
+    </div>
+
+    <section class="p-2 container mx-auto">
+        <div id="phoneGrid" class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            
+            <div class="phone-card bg-white overflow-hidden flex flex-col shadow-sm" data-name="iphone 17 pro max" data-price="1199">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1632649162859-400192e2764f?w=400" class="w-full h-40 object-cover">
+                    <div class="absolute top-0 left-0 bg-[#f85606] text-white text-[10px] font-bold px-1 rounded-br">-10%</div>
+                </div>
+                <div class="p-2 flex flex-col flex-grow">
+                    <h4 class="text-[11px] text-gray-800 line-clamp-2 h-8 leading-tight">Apple iPhone 17 Pro Max - Titanium Gold</h4>
+                    <div class="mt-1">
+                        <span class="text-[#f85606] font-bold text-lg leading-none">$1199</span>
+                    </div>
+                    <div class="flex items-center mt-1">
+                        <span class="text-yellow-400 text-[10px]">⭐⭐⭐⭐⭐</span>
+                        <span class="text-gray-400 text-[8px] ml-1">(92)</span>
+                    </div>
+                    <button onclick="sendOrder('iPhone 17 Pro Max')" class="mt-2 bg-[#f85606] text-white w-full py-2 rounded-sm text-[10px] font-bold uppercase">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="phone-card bg-white overflow-hidden flex flex-col shadow-sm" data-name="iphone 16" data-price="999">
+                <img src="https://images.unsplash.com/photo-1696446701796-da61225697cc?w=400" class="w-full h-40 object-cover">
+                <div class="p-2 flex flex-col flex-grow">
+                    <h4 class="text-[11px] text-gray-800 line-clamp-2 h-8 leading-tight">Apple iPhone 16 - Ultramarine Blue</h4>
+                    <span class="text-[#f85606] font-bold text-lg mt-1">$999</span>
+                    <button onclick="sendOrder('iPhone 16')" class="mt-2 bg-[#f85606] text-white w-full py-2 rounded-sm text-[10px] font-bold uppercase">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="phone-card bg-white overflow-hidden flex flex-col shadow-sm" data-name="iphone 14" data-price="699">
+                <img src="https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?w=400" class="w-full h-40 object-cover">
+                <div class="p-2 flex flex-col flex-grow">
+                    <h4 class="text-[11px] text-gray-800 line-clamp-2 h-8 leading-tight">Apple iPhone 14 - Purple 128GB</h4>
+                    <span class="text-[#f85606] font-bold text-lg mt-1">$699</span>
+                    <button onclick="sendOrder('iPhone 14')" class="mt-2 bg-[#f85606] text-white w-full py-2 rounded-sm text-[10px] font-bold uppercase">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="phone-card bg-white overflow-hidden flex flex-col shadow-sm" data-name="iphone 12" data-price="499">
+                <img src="https://images.unsplash.com/photo-1603891128711-11b4b03bb138?w=400" class="w-full h-40 object-cover">
+                <div class="p-2 flex flex-col flex-grow">
+                    <h4 class="text-[11px] text-gray-800 line-clamp-2 h-8 leading-tight">Apple iPhone 12 - White Edition</h4>
+                    <span class="text-[#f85606] font-bold text-lg mt-1">$499</span>
+                    <button onclick="sendOrder('iPhone 12')" class="mt-2 bg-[#f85606] text-white w-full py-2 rounded-sm text-[10px] font-bold uppercase">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="phone-card bg-white overflow-hidden flex flex-col shadow-sm" data-name="iphone 11" data-price="350">
+                <img src="https://images.unsplash.com/photo-1591337676887-a217a6970c8a?w=400" class="w-full h-40 object-cover">
+                <div class="p-2 flex flex-col flex-grow">
+                    <h4 class="text-[11px] text-gray-800 line-clamp-2 h-8 leading-tight">Apple iPhone 11 - Liquid Retina</h4>
+                    <span class="text-[#f85606] font-bold text-lg mt-1">$350</span>
+                    <button onclick="sendOrder('iPhone 11')" class="mt-2 bg-[#f85606] text-white w-full py-2 rounded-sm text-[10px] font-bold uppercase">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="phone-card bg-white overflow-hidden flex flex-col shadow-sm" data-name="iphone 7" data-price="120">
+                <img src="https://images.unsplash.com/photo-1556656793-062ff9878273?w=400" class="w-full h-40 object-cover">
+                <div class="p-2 flex flex-col flex-grow">
+                    <h4 class="text-[11px] text-gray-800 line-clamp-2 h-8 leading-tight">Apple iPhone 7 - Jet Black Classic</h4>
+                    <span class="text-[#f85606] font-bold text-lg mt-1">$120</span>
+                    <button onclick="sendOrder('iPhone 7')" class="mt-2 bg-[#f85606] text-white w-full py-2 rounded-sm text-[10px] font-bold uppercase">Buy Now</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // COUNTDOWN TIMER
+        function startTimer(duration, display) {
+            let timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+                if (--timer < 0) { timer = duration; }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            startTimer(60 * 60 * 8, document.querySelector('#timer'));
+        };
+
+        // SEARCH & SORT
+        function filterPhones() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.phone-card');
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                card.style.display = name.includes(input) ? "flex" : "none";
+            });
+        }
+
+        function sortByPrice() {
+            const grid = document.getElementById('phoneGrid');
+            const cards = Array.from(grid.getElementsByClassName('phone-card'));
+            cards.sort((a, b) => a.getAttribute('data-price') - b.getAttribute('data-price'));
+            cards.forEach(card => grid.appendChild(card));
+        }
+
+        // WHATSAPP REDIRECT
+        function sendOrder(model) {
+            const myPhone = "9764525918"; 
+            const text = `Hi iStore! I would like to buy the ${model}. Is it available?`;
+            window.open(`https://wa.me/${myPhone}?text=${encodeURIComponent(text)}`, '_blank');
+        }
+    </script>
+</body>
+  </html>
+  
